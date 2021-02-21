@@ -1,0 +1,1 @@
+sysbench --num-threads=4 --test=cpu run
