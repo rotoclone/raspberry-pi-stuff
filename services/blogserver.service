@@ -5,8 +5,7 @@ StartLimitIntervalSec=0
 
 [Service]
 Type=simple
-WorkingDirectory=/home/pi/blog-server
-ExecStart=/home/pi/blog-server/blog-server >>logs.txt 2>&1
+ExecStart=/home/pi/blog-server/blog-server >>/home/pi/blog-server/logs.txt 2>&1
 User=pi
 Restart=on-failure
 RestartSec=1
