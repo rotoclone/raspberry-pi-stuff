@@ -6,7 +6,7 @@ StartLimitIntervalSec=0
 [Service]
 Type=simple
 WorkingDirectory=/home/pi/system-stats-dashboard
-ExecStart=./system-stats-dashboard >>logs.txt 2>&1
+ExecStart=/home/pi/system-stats-dashboard/system-stats-dashboard >>logs.txt 2>&1
 User=pi
 Restart=on-failure
 RestartSec=1
