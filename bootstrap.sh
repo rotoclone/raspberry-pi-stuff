@@ -37,7 +37,7 @@ mv systemstatsdashboard.service /etc/systemd/system/
 wget -O blogserver.service https://github.com/rotoclone/raspberry-pi-stuff/raw/master/systemd/blogserver.service
 mv blogserver.service /etc/systemd/system/
 
-# TODO download nginx config files and copy them to the correct locations
+# set up nginx
 wget -O rotoclone.zone.conf https://github.com/rotoclone/raspberry-pi-stuff/raw/master/nginx/rotoclone.zone.conf
 mv rotoclone.zone.conf /etc/nginx/conf.d/
 
