@@ -2,7 +2,6 @@
 set -e
 
 # TODO set to boot to command-line
-# TODO enable SSH
 
 # install vim
 apt-get install vim
@@ -46,6 +45,7 @@ certbot --nginx -d rotoclone.zone -d www.rotoclone.zone
 
 # enable services
 systemctl daemon-reload
+systemctl enable ssh
 systemctl enable nginx
 systemctl enable systemstatsdashboard
 systemctl enable blogserver
