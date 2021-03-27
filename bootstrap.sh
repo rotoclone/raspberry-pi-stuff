@@ -9,4 +9,5 @@
 # TODO download .service files and copy them to /etc/systemd/system
 # TODO download nginx config files and copy them to the correct locations
 # TODO enable services
+# TODO run certbot so it sets up the auto-renew stuff
 # TODO reboot
