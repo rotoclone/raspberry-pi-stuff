@@ -2,6 +2,7 @@
 # TODO enable SSH
 # TODO install vim
 # TODO install rust
+# TODO install nginx
 # TODO install certbot
 # TODO download and unzip latest system-stats-dashboard release
 # TODO download and unzip latest blog-server release
