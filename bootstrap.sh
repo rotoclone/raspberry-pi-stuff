@@ -17,8 +17,16 @@ apt-get install python-certbot-nginx
 # install rust
 curl https://sh.rustup.rs -sSf | sh
 
-# TODO download and unzip latest system-stats-dashboard release
-# TODO download and unzip latest blog-server release
+# install latest system-stats-dashboard release
+wget -O system-stats-dashboard.zip https://github.com/rotoclone/system-stats-dashboard/releases/latest/download/raspberrypi.zip
+unzip system-stats-dashboard.zip -d /home/pi/system-stats-dashboard
+rm -f system-stats-dashboard.zip
+
+# install latest blog-server release
+wget -O blog-server.zip https://github.com/rotoclone/blog-server/releases/latest/download/raspberrypi.zip
+unzip blog-server.zip -d /home/pi/blog-server
+rm -f blog-server.zip
+
 # TODO download .service files and copy them to /etc/systemd/system
 # TODO download nginx config files and copy them to the correct locations
 
