@@ -29,17 +29,26 @@ unzip blog-server.zip -d /home/pi/blog-server
 chmod +x /home/pi/blog-server/blog-server
 rm -f blog-server.zip
 
-# TODO download .service files and copy them to /etc/systemd/system
+# set up system-stats-dashboard systemd service
+wget -O systemstatsdashboard.service https://github.com/rotoclone/raspberry-pi-stuff/raw/master/systemd/systemstatsdashboard.service
+mv systemstatsdashboard.service /etc/systemd/system/
+
+# set up blog-server systemd service
+wget -O blogserver.service https://github.com/rotoclone/raspberry-pi-stuff/raw/master/systemd/blogserver.service
+mv blogserver.service /etc/systemd/system/
+
 # TODO download nginx config files and copy them to the correct locations
+wget -O rotoclone.zone.conf https://github.com/rotoclone/raspberry-pi-stuff/raw/master/nginx/rotoclone.zone.conf
+mv rotoclone.zone.conf /etc/nginx/conf.d/
+
+# run certbot so it sets up the auto-renew stuff
+certbot --nginx -d rotoclone.zone -d www.rotoclone.zone
 
 # enable services
 systemctl daemon-reload
 systemctl enable nginx
 systemctl enable systemstatsdashboard
 systemctl enable blogserver
-
-# run certbot so it sets up the auto-renew stuff
-certbot --nginx -d rotoclone.zone -d www.rotoclone.zone
 
 echo "Success! Rebooting..."
 reboot
