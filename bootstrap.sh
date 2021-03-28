@@ -34,7 +34,9 @@ pip3 -v install docker-compose
 echo "Done"
 
 echo "Installing shynet..."
+git clone https://github.com/milesmcc/shynet.git
 #TODO
+rm -rf shynet
 echo "Done"
 
 echo "Installing system-stats-dashboard..."
