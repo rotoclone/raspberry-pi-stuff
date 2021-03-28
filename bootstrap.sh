@@ -22,7 +22,8 @@ echo "Done"
 
 echo "Installing docker..."
 curl -sSL https://get.docker.com | sh
-#usermod -aG docker pi
+usermod -aG docker pi
+wget -O /etc/docker/daemon.json https://github.com/rotoclone/raspberry-pi-stuff/raw/master/docker/daemon.json
 echo "Done"
 
 echo "Installing pip..."
@@ -41,9 +42,6 @@ wget -O shynet/docker-compose.yml https://github.com/rotoclone/raspberry-pi-stuf
 /home/pi/.local/bin/docker-compose #TODO run docker compose in the shynet dir
 docker exec -it shynet_main ./manage.py registeradmin rotoclone@example.com
 docker exec -it shynet_main ./manage.py hostname analytics.rotoclone.zone
-# from https://github.com/moby/moby/issues/866#issuecomment-19218300
-iptables -t nat -F
-ifconfig docker0 down
 echo "Done"
 
 echo "Installing system-stats-dashboard..."
