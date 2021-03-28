@@ -82,7 +82,7 @@ echo "Done"
 
 # run certbot so it sets up the auto-renew stuff
 echo "Running certbot..."
-certbot --nginx -d rotoclone.zone -d www.rotoclone.zone
+certbot --nginx -d rotoclone.zone -d www.rotoclone.zone -d analytics.rotoclone.zone
 echo "Done"
 
 echo "Enabling services..."
