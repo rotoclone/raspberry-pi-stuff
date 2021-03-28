@@ -30,8 +30,16 @@ wget -O /etc/docker/daemon.json https://github.com/rotoclone/raspberry-pi-stuff/
 echo "Done"
 
 ## begin umami stuff
+echo "Building prisma..."
+git clone https://github.com/prisma/prisma-engines.git
+cd prisma-engines
+source ./.envrc
+cargo build --release
+echo "Done"
+
 echo "Installing umami..."
 git clone https://github.com/mikecao/umami.git
+#TODO add prisma/.env
 #TODO update dockerfile
 #TODO update docker-compose
 cd umami
