@@ -37,7 +37,7 @@ echo "Installing shynet..."
 git clone https://github.com/milesmcc/shynet.git
 wget -O shynet/.env https://github.com/rotoclone/raspberry-pi-stuff/raw/master/shynet/.env
 wget -O shynet/nginx.conf https://github.com/rotoclone/raspberry-pi-stuff/raw/master/shynet/nginx.conf
-#TODO
+/home/pi/.local/bin/docker-compose #TODO
 rm -rf shynet
 echo "Done"
 
