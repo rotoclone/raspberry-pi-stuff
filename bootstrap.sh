@@ -37,7 +37,7 @@ echo "Installing shynet..."
 git clone https://github.com/milesmcc/shynet.git
 wget -O shynet/.env https://github.com/rotoclone/raspberry-pi-stuff/raw/master/shynet/.env
 wget -O shynet/nginx.conf https://github.com/rotoclone/raspberry-pi-stuff/raw/master/shynet/nginx.conf
-wget -O shynet/nginx.conf https://github.com/rotoclone/raspberry-pi-stuff/raw/master/shynet/docker-compose.yml
+wget -O shynet/docker-compose.yml https://github.com/rotoclone/raspberry-pi-stuff/raw/master/shynet/docker-compose.yml
 /home/pi/.local/bin/docker-compose #TODO run docker compose in the shynet dir
 docker exec -it shynet_main ./manage.py registeradmin rotoclone@example.com
 docker exec -it shynet_main ./manage.py hostname analytics.rotoclone.zone
