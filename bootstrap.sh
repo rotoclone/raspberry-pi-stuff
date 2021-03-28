@@ -16,6 +16,19 @@ apt-get install python-certbot-nginx
 # install rust
 curl https://sh.rustup.rs -sSf | sh
 
+# install docker
+curl -sSL https://get.docker.com | sh
+sudo usermod -aG docker pi
+
+# install pip
+apt install python3-pip
+
+# install docker-compose
+pip3 -v install docker-compose
+
+# install shynet
+#TODO
+
 # install latest system-stats-dashboard release
 wget -O system-stats-dashboard.zip https://github.com/rotoclone/system-stats-dashboard/releases/latest/download/raspberrypi.zip
 unzip system-stats-dashboard.zip -d /home/pi/system-stats-dashboard
@@ -47,6 +60,7 @@ certbot --nginx -d rotoclone.zone -d www.rotoclone.zone
 systemctl daemon-reload
 systemctl enable ssh
 systemctl enable nginx
+systemctl enable docker
 systemctl enable systemstatsdashboard
 systemctl enable blogserver
 
