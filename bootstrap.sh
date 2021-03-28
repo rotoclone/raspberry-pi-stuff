@@ -1,6 +1,9 @@
 # exit on error
 set -e
 
+mkdir ~/setup
+cd ~/setup
+
 # TODO set to boot to command-line
 
 echo "Installing vim..."
@@ -39,7 +42,11 @@ git clone https://github.com/milesmcc/shynet.git
 wget -O shynet/.env https://github.com/rotoclone/raspberry-pi-stuff/raw/master/shynet/.env
 wget -O shynet/nginx.conf https://github.com/rotoclone/raspberry-pi-stuff/raw/master/shynet/nginx.conf
 wget -O shynet/docker-compose.yml https://github.com/rotoclone/raspberry-pi-stuff/raw/master/shynet/docker-compose.yml
-/home/pi/.local/bin/docker-compose #TODO run docker compose in the shynet dir
+wget -O shynet/Dockerfile https://github.com/rotoclone/raspberry-pi-stuff/raw/master/shynet/Dockerfile
+cd shynet
+/usr/bin/docker build . --network=host
+/home/pi/.local/bin/docker-compose up -d
+cd ..
 docker exec -it shynet_main ./manage.py registeradmin rotoclone@example.com
 docker exec -it shynet_main ./manage.py hostname analytics.rotoclone.zone
 echo "Done"
