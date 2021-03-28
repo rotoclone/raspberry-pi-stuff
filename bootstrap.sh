@@ -30,6 +30,10 @@ wget -O /etc/docker/daemon.json https://github.com/rotoclone/raspberry-pi-stuff/
 echo "Done"
 
 ## begin umami stuff
+echo "Installing protobuf..."
+apt-get install protobuf-compiler
+echo "Done"
+
 echo "Building prisma..."
 git clone https://github.com/prisma/prisma-engines.git
 cd prisma-engines
