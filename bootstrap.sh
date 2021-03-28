@@ -32,7 +32,12 @@ echo "Done"
 ## begin umami stuff
 echo "Installing umami..."
 git clone https://github.com/mikecao/umami.git
-#TODO
+#TODO update dockerfile
+#TODO update docker-compose
+cd umami
+/usr/bin/docker build -t armumami . --network=host
+/home/pi/.local/bin/docker-compose up -d
+cd ..
 echo "Done"
 ## end umami stuff
 
@@ -52,7 +57,7 @@ wget -O shynet/nginx.conf https://github.com/rotoclone/raspberry-pi-stuff/raw/ma
 wget -O shynet/docker-compose.yml https://github.com/rotoclone/raspberry-pi-stuff/raw/master/shynet/docker-compose.yml
 wget -O shynet/Dockerfile https://github.com/rotoclone/raspberry-pi-stuff/raw/master/shynet/Dockerfile
 cd shynet
-/usr/bin/docker build . --network=host
+/usr/bin/docker build -t armshynet . --network=host
 /home/pi/.local/bin/docker-compose up -d
 cd ..
 docker exec -it shynet_main ./manage.py registeradmin rotoclone@example.com
