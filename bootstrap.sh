@@ -76,8 +76,8 @@ mv blogserver.service /etc/systemd/system/
 echo "Done"
 
 echo "Setting up nginx config..."
-wget -O rotoclone.zone.conf https://github.com/rotoclone/raspberry-pi-stuff/raw/master/nginx/rotoclone.zone.conf
-mv rotoclone.zone.conf /etc/nginx/conf.d/
+wget -O /etc/nginx/conf.d/rotoclone.zone.conf https://github.com/rotoclone/raspberry-pi-stuff/raw/master/nginx/rotoclone.zone.conf
+wget -O /etc/nginx/nginx.conf https://github.com/rotoclone/raspberry-pi-stuff/raw/master/nginx/nginx.conf
 echo "Done"
 
 # run certbot so it sets up the auto-renew stuff
