@@ -22,7 +22,7 @@ echo "Done"
 
 echo "Installing docker..."
 curl -sSL https://get.docker.com | sh
-sudo usermod -aG docker pi
+#usermod -aG docker pi
 echo "Done"
 
 echo "Installing pip..."
