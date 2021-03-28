@@ -31,7 +31,8 @@ echo "Done"
 
 ## begin umami stuff
 echo "Installing umami..."
-docker run ghcr.io/mikecao/umami:postgresql-latest -d #TODO this doesn't work
+git clone https://github.com/mikecao/umami.git
+#TODO
 echo "Done"
 ## end umami stuff
 
