@@ -29,6 +29,13 @@ usermod -aG docker pi
 wget -O /etc/docker/daemon.json https://github.com/rotoclone/raspberry-pi-stuff/raw/master/docker/daemon.json
 echo "Done"
 
+## begin umami stuff
+echo "Installing umami..."
+docker run ghcr.io/mikecao/umami:postgresql-latest -d #TODO this doesn't work
+echo "Done"
+## end umami stuff
+
+## begin shynet stuff
 echo "Installing pip..."
 apt install python3-pip
 echo "Done"
@@ -50,6 +57,7 @@ cd ..
 docker exec -it shynet_main ./manage.py registeradmin rotoclone@example.com
 docker exec -it shynet_main ./manage.py hostname analytics.rotoclone.zone
 echo "Done"
+## end shynet stuff
 
 echo "Installing system-stats-dashboard..."
 wget -O system-stats-dashboard.zip https://github.com/rotoclone/system-stats-dashboard/releases/latest/download/raspberrypi.zip
