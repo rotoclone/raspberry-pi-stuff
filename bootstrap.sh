@@ -53,7 +53,8 @@ echo "Done"
 
 echo "Installing postgresql..."
 apt-get install postgresql
-sudo -u postgres bash -c "psql -c \"CREATE USER pi WITH PASSWORD 'dbpassword';\""
+sudo -u postgres bash -c "psql -c \"CREATE USER pi PASSWORD 'dbpassword' CREATEDB CREATEROLE;\""
+createdb pi
 echo "Done"
 
 echo "Installing umami..."
