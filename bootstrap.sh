@@ -52,6 +52,7 @@ git clone https://github.com/mikecao/umami.git
 #TODO add prisma/.env
 #TODO update dockerfile
 #TODO update docker-compose
+mkdir umami/prisma-binaries
 cp prisma-engines/target/release/query-engine umami/prisma-binaries/
 cp prisma-engines/target/release/introspection-engine umami/prisma-binaries/
 cp prisma-engines/target/release/migration-engine umami/prisma-binaries/
