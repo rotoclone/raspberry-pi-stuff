@@ -44,6 +44,7 @@ git clone https://github.com/prisma/prisma-engines.git
 cd prisma-engines
 source ./.envrc
 cargo build --release
+cd ..
 echo "Done"
 
 echo "Installing umami..."
@@ -51,6 +52,10 @@ git clone https://github.com/mikecao/umami.git
 #TODO add prisma/.env
 #TODO update dockerfile
 #TODO update docker-compose
+cp ../prisma-engines/target/release/query-engine umami/prisma-binaries
+cp ../prisma-engines/target/release/introspection-engine umami/prisma-binaries
+cp ../prisma-engines/target/release/migration-engine umami/prisma-binaries
+cp ../prisma-engines/target/release/prisma-fmt umami/prisma-binaries
 cd umami
 /usr/bin/docker build -t armumami . --network=host
 /home/pi/.local/bin/docker-compose up -d
