@@ -35,6 +35,7 @@ apt-get install protobuf-compiler
 echo "Done"
 
 echo "Building prisma..."
+#TODO update /etc/dphys-swapfile
 git clone https://github.com/prisma/prisma-engines.git
 cd prisma-engines
 source ./.envrc
