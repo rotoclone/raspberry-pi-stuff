@@ -69,8 +69,8 @@ cp prisma-engines/target/release/prisma-fmt umami/prisma-binaries/
 sudo -u postgres bash -c "psql -c \"CREATE DATABASE umamidb;\""
 sudo -u postgres bash -c "psql -d umamidb -f sql/schema.postgresql.sql"
 #TODO add .env
-npm install npm-run-all
 cd umami
+npm install
 npm run build
 #TODO run it
 cd ..
