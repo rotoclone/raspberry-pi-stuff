@@ -47,19 +47,26 @@ cargo build --release
 cd ..
 echo "Done"
 
+echo "Installing nodejs..."
+apt-get install nodejs
+echo "Done"
+
+echo "Installing postgresql..."
+apt-get install postgresql
+sudo -u postgres bash -c "psql -c \"CREATE USER pi WITH PASSWORD 'dbpassword';\""
+echo "Done"
+
 echo "Installing umami..."
 git clone https://github.com/mikecao/umami.git
 #TODO add prisma/.env
-#TODO update dockerfile
-#TODO update docker-compose
 mkdir umami/prisma-binaries
 cp prisma-engines/target/release/query-engine umami/prisma-binaries/
 cp prisma-engines/target/release/introspection-engine umami/prisma-binaries/
 cp prisma-engines/target/release/migration-engine umami/prisma-binaries/
 cp prisma-engines/target/release/prisma-fmt umami/prisma-binaries/
 cd umami
-/usr/bin/docker build -t armumami . --network=host
-/home/pi/.local/bin/docker-compose up -d
+sudo -u postgres bash -c "psql -c \"CREATE DATABASE umamidb;\""
+#TODO install
 cd ..
 echo "Done"
 ## end umami stuff
