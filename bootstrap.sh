@@ -34,8 +34,12 @@ echo "Installing protobuf..."
 apt-get install protobuf-compiler
 echo "Done"
 
-echo "Building prisma..."
+echo "Increasing swapfile size...
 #TODO update /etc/dphys-swapfile
+/etc/init.d/dphys-swapfile restart
+echo "Done"
+
+echo "Building prisma..."
 git clone https://github.com/prisma/prisma-engines.git
 cd prisma-engines
 source ./.envrc
