@@ -48,7 +48,8 @@ cd ..
 echo "Done"
 
 echo "Installing nodejs..."
-apt-get install nodejs
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+apt-get install -y nodejs
 echo "Done"
 
 echo "Installing postgresql..."
@@ -65,10 +66,11 @@ cp prisma-engines/target/release/query-engine umami/prisma-binaries/
 cp prisma-engines/target/release/introspection-engine umami/prisma-binaries/
 cp prisma-engines/target/release/migration-engine umami/prisma-binaries/
 cp prisma-engines/target/release/prisma-fmt umami/prisma-binaries/
-cd umami
 sudo -u postgres bash -c "psql -c \"CREATE DATABASE umamidb;\""
 sudo -u postgres bash -c "psql -d umamidb -f sql/schema.postgresql.sql"
 #TODO add .env
+npm install npm-run-all
+cd umami
 npm run build
 #TODO run it
 cd ..
