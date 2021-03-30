@@ -42,6 +42,7 @@ echo "Done"
 echo "Building prisma..."
 git clone https://github.com/prisma/prisma-engines.git
 cd prisma-engines
+git checkout 2.19.0
 source ./.envrc
 cargo build --release
 cd ..
