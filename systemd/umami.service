@@ -1,6 +1,7 @@
 [Unit]
 Description=Umami
 After=network.target
+Wants=postgresql.service
 StartLimitIntervalSec=0
 
 [Service]
@@ -15,4 +16,3 @@ StandardError=append:/home/pi/git/umami/server_logs.txt
 
 [Install]
 WantedBy=multi-user.target
-Wants=postgresql.service
