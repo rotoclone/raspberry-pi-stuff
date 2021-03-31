@@ -6,6 +6,11 @@ cd ~/setup
 
 # TODO set to boot to command-line
 
+echo "Updating packages..."
+apt-get update
+apt-get upgrade
+echo "Done"
+
 echo "Installing vim..."
 apt-get install vim
 echo "Done"
@@ -64,16 +69,23 @@ sudo -u postgres bash -c "psql -c \"CREATE USER pi PASSWORD 'dbpassword' CREATED
 createdb pi
 echo "Done"
 
+#echo "Installing mysql..."
+#apt-get install mariadb-server
+#echo "Done"
+
 echo "Installing umami..."
 git clone https://github.com/mikecao/umami.git
 #TODO add prisma/.env
-mkdir umami/prisma-binaries
-cp prisma-engines/target/release/query-engine umami/prisma-binaries/
-cp prisma-engines/target/release/introspection-engine umami/prisma-binaries/
-cp prisma-engines/target/release/migration-engine umami/prisma-binaries/
-cp prisma-engines/target/release/prisma-fmt umami/prisma-binaries/
-sudo -u postgres bash -c "psql -c \"CREATE DATABASE umamidb;\""
-sudo -u postgres bash -c "psql -d umamidb -f sql/schema.postgresql.sql"
+#mkdir umami/prisma-binaries
+#cp prisma-engines/target/release/query-engine umami/prisma-binaries/
+#cp prisma-engines/target/release/introspection-engine umami/prisma-binaries/
+#cp prisma-engines/target/release/migration-engine umami/prisma-binaries/
+#cp prisma-engines/target/release/prisma-fmt umami/prisma-binaries/
+sudo -u pi bash -c "psql -c \"CREATE DATABASE umamidb;\""
+sudo -u pi bash -c "psql -d umamidb -f sql/schema.postgresql.sql"
+#mysql --user=root --execute="CREATE DATABASE umamidb;"
+#mysql --user=root --execute="CREATE USER 'dbuser'@'localhost' IDENTIFIED BY 'dbpassword'; GRANT ALL PRIVILEGES ON umamidb.* TO 'dbuser'@'localhost'; FLUSH PRIVILEGES;"
+#mysql --user=root umamidb < sql/schema.mysql.sql
 #TODO add .env
 cd umami
 npm install
