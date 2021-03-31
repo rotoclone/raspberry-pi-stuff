@@ -1,8 +1,8 @@
 # exit on error
 set -e
 
-mkdir ~/setup
-cd ~/setup
+cd /home/pi
+mkdir /home/pi/git
 
 # TODO set to boot to command-line
 
@@ -45,12 +45,13 @@ echo "Increasing swapfile size...
 echo "Done"
 
 echo "Building prisma..."
+cd /home/pi/git
 git clone https://github.com/prisma/prisma-engines.git
 cd prisma-engines
 git checkout 2.19.0
 source ./.envrc
 cargo build --release
-cd ..
+cd /home/pi
 echo "Done"
 
 echo "Resetting swapfile size...
@@ -74,6 +75,7 @@ echo "Done"
 #echo "Done"
 
 echo "Installing umami..."
+cd /home/pi/git
 git clone https://github.com/mikecao/umami.git
 #TODO add prisma/.env
 #mkdir umami/prisma-binaries
@@ -91,7 +93,7 @@ cd umami
 git checkout v1.16.0
 npm install
 npm run build
-cd ..
+cd /home/pi
 echo "Done"
 
 echo "Setting up umami systemd service..."
@@ -109,6 +111,7 @@ echo "Done"
 #echo "Done"
 
 #echo "Installing shynet..."
+#cd /home/pi/git
 #git clone https://github.com/milesmcc/shynet.git
 #wget -O shynet/.env https://github.com/rotoclone/raspberry-pi-stuff/raw/master/shynet/.env
 #wget -O shynet/nginx.conf https://github.com/rotoclone/raspberry-pi-stuff/raw/master/shynet/nginx.conf
@@ -117,7 +120,7 @@ echo "Done"
 #cd shynet
 #/usr/bin/docker build -t armshynet . --network=host
 #/home/pi/.local/bin/docker-compose up -d
-#cd ..
+#cd /home/pi
 #docker exec -it shynet_main ./manage.py registeradmin rotoclone@example.com
 #docker exec -it shynet_main ./manage.py hostname analytics.rotoclone.zone
 #echo "Done"
