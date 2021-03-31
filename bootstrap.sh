@@ -28,11 +28,11 @@ echo "Installing rust..."
 curl https://sh.rustup.rs -sSf | sh
 echo "Done"
 
-echo "Installing docker..."
-curl -sSL https://get.docker.com | sh
-usermod -aG docker pi
-wget -O /etc/docker/daemon.json https://github.com/rotoclone/raspberry-pi-stuff/raw/master/docker/daemon.json
-echo "Done"
+#echo "Installing docker..."
+#curl -sSL https://get.docker.com | sh
+#usermod -aG docker pi
+#wget -O /etc/docker/daemon.json https://github.com/rotoclone/raspberry-pi-stuff/raw/master/docker/daemon.json
+#echo "Done"
 
 ## begin umami stuff
 echo "Installing protobuf..."
@@ -91,33 +91,36 @@ cd umami
 git checkout v1.16.0
 npm install
 npm run build
-#TODO run it
 cd ..
+echo "Done"
+
+echo "Setting up umami systemd service..."
+wget -O /etc/systemd/system/umami.service https://github.com/rotoclone/raspberry-pi-stuff/raw/master/systemd/umami.service
 echo "Done"
 ## end umami stuff
 
 ## begin shynet stuff
-echo "Installing pip..."
-apt install python3-pip
-echo "Done"
+#echo "Installing pip..."
+#apt install python3-pip
+#echo "Done"
 
-echo "Installing docker-compose..."
-pip3 -v install docker-compose
-echo "Done"
+#echo "Installing docker-compose..."
+#pip3 -v install docker-compose
+#echo "Done"
 
-echo "Installing shynet..."
-git clone https://github.com/milesmcc/shynet.git
-wget -O shynet/.env https://github.com/rotoclone/raspberry-pi-stuff/raw/master/shynet/.env
-wget -O shynet/nginx.conf https://github.com/rotoclone/raspberry-pi-stuff/raw/master/shynet/nginx.conf
-wget -O shynet/docker-compose.yml https://github.com/rotoclone/raspberry-pi-stuff/raw/master/shynet/docker-compose.yml
-wget -O shynet/Dockerfile https://github.com/rotoclone/raspberry-pi-stuff/raw/master/shynet/Dockerfile
-cd shynet
-/usr/bin/docker build -t armshynet . --network=host
-/home/pi/.local/bin/docker-compose up -d
-cd ..
-docker exec -it shynet_main ./manage.py registeradmin rotoclone@example.com
-docker exec -it shynet_main ./manage.py hostname analytics.rotoclone.zone
-echo "Done"
+#echo "Installing shynet..."
+#git clone https://github.com/milesmcc/shynet.git
+#wget -O shynet/.env https://github.com/rotoclone/raspberry-pi-stuff/raw/master/shynet/.env
+#wget -O shynet/nginx.conf https://github.com/rotoclone/raspberry-pi-stuff/raw/master/shynet/nginx.conf
+#wget -O shynet/docker-compose.yml https://github.com/rotoclone/raspberry-pi-stuff/raw/master/shynet/docker-compose.yml
+#wget -O shynet/Dockerfile https://github.com/rotoclone/raspberry-pi-stuff/raw/master/shynet/Dockerfile
+#cd shynet
+#/usr/bin/docker build -t armshynet . --network=host
+#/home/pi/.local/bin/docker-compose up -d
+#cd ..
+#docker exec -it shynet_main ./manage.py registeradmin rotoclone@example.com
+#docker exec -it shynet_main ./manage.py hostname analytics.rotoclone.zone
+#echo "Done"
 ## end shynet stuff
 
 echo "Installing system-stats-dashboard..."
@@ -135,13 +138,11 @@ rm -f blog-server.zip
 echo "Done"
 
 echo "Setting up system-stats-dashboard systemd service..."
-wget -O systemstatsdashboard.service https://github.com/rotoclone/raspberry-pi-stuff/raw/master/systemd/systemstatsdashboard.service
-mv systemstatsdashboard.service /etc/systemd/system/
+wget -O /etc/systemd/system/systemstatsdashboard.service https://github.com/rotoclone/raspberry-pi-stuff/raw/master/systemd/systemstatsdashboard.service
 echo "Done"
 
 echo "Setting up blog-server systemd service..."
-wget -O blogserver.service https://github.com/rotoclone/raspberry-pi-stuff/raw/master/systemd/blogserver.service
-mv blogserver.service /etc/systemd/system/
+wget -O /etc/systemd/system/blogserver.service https://github.com/rotoclone/raspberry-pi-stuff/raw/master/systemd/blogserver.service
 echo "Done"
 
 echo "Setting up nginx config..."
@@ -158,9 +159,11 @@ echo "Enabling services..."
 systemctl daemon-reload
 systemctl enable ssh
 systemctl enable nginx
-systemctl enable docker
+#systemctl enable docker
 systemctl enable systemstatsdashboard
 systemctl enable blogserver
+systemctl enable postgresql
+systemctl enable umami
 echo "Done"
 
 echo "Success! Rebooting..."
