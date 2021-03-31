@@ -88,6 +88,7 @@ sudo -u pi bash -c "psql -d umamidb -f sql/schema.postgresql.sql"
 #mysql --user=root umamidb < sql/schema.mysql.sql
 #TODO add .env
 cd umami
+git checkout v1.16.0
 npm install
 npm run build
 #TODO run it
