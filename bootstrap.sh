@@ -1,8 +1,11 @@
 # exit on error
 set -e
 
-cd /home/pi
-mkdir /home/pi/git
+BASE_DIR=/home/pi
+GIT_DIR=${BASE_DIR}/git
+
+cd ${BASE_DIR}
+mkdir ${GIT_DIR}
 
 # TODO set to boot to command-line
 
@@ -45,13 +48,13 @@ echo "Increasing swapfile size...
 echo "Done"
 
 echo "Building prisma..."
-cd /home/pi/git
+cd ${GIT_DIR}
 git clone https://github.com/prisma/prisma-engines.git
 cd prisma-engines
 git checkout 2.19.0
 source ./.envrc
 cargo build --release
-cd /home/pi
+cd ${BASE_DIR}
 echo "Done"
 
 echo "Resetting swapfile size...
@@ -75,25 +78,20 @@ echo "Done"
 #echo "Done"
 
 echo "Installing umami..."
-cd /home/pi/git
+cd ${GIT_DIR}
 git clone https://github.com/mikecao/umami.git
-#TODO add prisma/.env
-#mkdir umami/prisma-binaries
-#cp prisma-engines/target/release/query-engine umami/prisma-binaries/
-#cp prisma-engines/target/release/introspection-engine umami/prisma-binaries/
-#cp prisma-engines/target/release/migration-engine umami/prisma-binaries/
-#cp prisma-engines/target/release/prisma-fmt umami/prisma-binaries/
 sudo -u pi bash -c "psql -c \"CREATE DATABASE umamidb;\""
 sudo -u pi bash -c "psql -d umamidb -f sql/schema.postgresql.sql"
 #mysql --user=root --execute="CREATE DATABASE umamidb;"
 #mysql --user=root --execute="CREATE USER 'dbuser'@'localhost' IDENTIFIED BY 'dbpassword'; GRANT ALL PRIVILEGES ON umamidb.* TO 'dbuser'@'localhost'; FLUSH PRIVILEGES;"
 #mysql --user=root umamidb < sql/schema.mysql.sql
-#TODO add .env
 cd umami
 git checkout v1.16.0
+wget -O .env https://github.com/rotoclone/raspberry-pi-stuff/raw/master/umami/.env
+wget -O prisma/.env https://github.com/rotoclone/raspberry-pi-stuff/raw/master/umami/prisma.env
 npm install
 npm run build
-cd /home/pi
+cd ${BASE_DIR}
 echo "Done"
 
 echo "Setting up umami systemd service..."
@@ -111,7 +109,7 @@ echo "Done"
 #echo "Done"
 
 #echo "Installing shynet..."
-#cd /home/pi/git
+#cd ${GIT_DIR}
 #git clone https://github.com/milesmcc/shynet.git
 #wget -O shynet/.env https://github.com/rotoclone/raspberry-pi-stuff/raw/master/shynet/.env
 #wget -O shynet/nginx.conf https://github.com/rotoclone/raspberry-pi-stuff/raw/master/shynet/nginx.conf
@@ -120,7 +118,7 @@ echo "Done"
 #cd shynet
 #/usr/bin/docker build -t armshynet . --network=host
 #/home/pi/.local/bin/docker-compose up -d
-#cd /home/pi
+#cd ${BASE_DIR}
 #docker exec -it shynet_main ./manage.py registeradmin rotoclone@example.com
 #docker exec -it shynet_main ./manage.py hostname analytics.rotoclone.zone
 #echo "Done"
