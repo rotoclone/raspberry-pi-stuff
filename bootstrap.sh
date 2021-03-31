@@ -48,6 +48,11 @@ cargo build --release
 cd ..
 echo "Done"
 
+echo "Resetting swapfile size...
+#TODO update /etc/dphys-swapfile
+/etc/init.d/dphys-swapfile restart
+echo "Done"
+
 echo "Installing nodejs..."
 curl -sL https://deb.nodesource.com/setup_15.x | sudo -E bash -
 apt-get install -y nodejs
