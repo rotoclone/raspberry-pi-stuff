@@ -22,6 +22,20 @@ echo "Installing nginx..."
 apt-get install nginx
 echo "Done"
 
+echo "Installing fail2ban..."
+apt-get install fail2ban
+echo "Done"
+
+echo "Setting up fail2ban..."
+#TODO /etc/fail2ban/jail.local
+#TODO /etc/fail2ban/filter.d/nginx-http-auth.conf
+#TODO nginx-noscript.conf
+#TODO nginx-nohome.conf
+#TODO nginx-noproxy.conf
+#TODO nginx-dos.conf
+systemctl restart fail2ban
+echo "Done"
+
 echo "Installing certbot..."
 apt-get install certbot
 apt-get install python-certbot-nginx
@@ -160,6 +174,7 @@ echo "Enabling services..."
 systemctl daemon-reload
 systemctl enable ssh
 systemctl enable nginx
+systemctl enable fail2ban
 #systemctl enable docker
 systemctl enable systemstatsdashboard
 systemctl enable rotoclonezone
