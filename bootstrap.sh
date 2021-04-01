@@ -27,12 +27,11 @@ apt-get install fail2ban
 echo "Done"
 
 echo "Setting up fail2ban..."
-#TODO /etc/fail2ban/jail.local
-#TODO /etc/fail2ban/filter.d/nginx-http-auth.conf
-#TODO nginx-noscript.conf
-#TODO nginx-nohome.conf
-#TODO nginx-noproxy.conf
-#TODO nginx-dos.conf
+wget -O /etc/fail2ban/jail.local https://github.com/rotoclone/raspberry-pi-stuff/raw/master/fail2ban/jail.local
+wget -O /etc/fail2ban/filter.d/nginx-noscript.conf https://github.com/rotoclone/raspberry-pi-stuff/raw/master/fail2ban/nginx-noscript.conf
+wget -O /etc/fail2ban/filter.d/nginx-nohome.conf https://github.com/rotoclone/raspberry-pi-stuff/raw/master/fail2ban/nginx-nohome.conf
+wget -O /etc/fail2ban/filter.d/nginx-noproxy.conf https://github.com/rotoclone/raspberry-pi-stuff/raw/master/fail2ban/nginx-noproxy.conf
+wget -O /etc/fail2ban/filter.d/nginx-dos.conf https://github.com/rotoclone/raspberry-pi-stuff/raw/master/fail2ban/nginx-dos.conf
 systemctl restart fail2ban
 echo "Done"
 
