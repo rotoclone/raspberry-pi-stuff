@@ -1,5 +1,5 @@
-SERVICE_NAME=blogserver
-BINARY_NAME=blog-server
+SERVICE_NAME=rotoclonezone
+BINARY_NAME=rotoclone-zone
 GIT_DIR=/home/pi/git/${BINARY_NAME}
 TARGET_DIR=/home/pi/${BINARY_NAME}
 
