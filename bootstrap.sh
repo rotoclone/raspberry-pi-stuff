@@ -131,19 +131,19 @@ chmod +x /home/pi/system-stats-dashboard/system-stats-dashboard
 rm -f system-stats-dashboard.zip
 echo "Done"
 
-echo "Installing blog-server..."
-wget -O blog-server.zip https://github.com/rotoclone/blog-server/releases/latest/download/raspberrypi.zip
-unzip blog-server.zip -d /home/pi/blog-server
-chmod +x /home/pi/blog-server/blog-server
-rm -f blog-server.zip
+echo "Installing rotoclone-zone..."
+wget -O rotoclone-zone.zip https://github.com/rotoclone/rotoclone-zone/releases/latest/download/raspberrypi.zip
+unzip rotoclone-zone.zip -d /home/pi/rotoclone-zone
+chmod +x /home/pi/rotoclone-zone/rotoclone-zone
+rm -f rotoclone-zone.zip
 echo "Done"
 
 echo "Setting up system-stats-dashboard systemd service..."
 wget -O /etc/systemd/system/systemstatsdashboard.service https://github.com/rotoclone/raspberry-pi-stuff/raw/master/systemd/systemstatsdashboard.service
 echo "Done"
 
-echo "Setting up blog-server systemd service..."
-wget -O /etc/systemd/system/blogserver.service https://github.com/rotoclone/raspberry-pi-stuff/raw/master/systemd/blogserver.service
+echo "Setting up rotoclone-zone systemd service..."
+wget -O /etc/systemd/system/rotoclonezone.service https://github.com/rotoclone/raspberry-pi-stuff/raw/master/systemd/rotoclonezone.service
 echo "Done"
 
 echo "Setting up nginx config..."
@@ -162,7 +162,7 @@ systemctl enable ssh
 systemctl enable nginx
 #systemctl enable docker
 systemctl enable systemstatsdashboard
-systemctl enable blogserver
+systemctl enable rotoclonezone
 systemctl enable postgresql
 systemctl enable umami
 echo "Done"
