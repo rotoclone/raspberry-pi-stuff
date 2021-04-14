@@ -60,7 +60,7 @@ ignoreip = 127.0.0.1/8 ::1 192.168.1.1
 ignorecommand =
 
 # "bantime" is the number of seconds that a host is banned.
-bantime  = 90m
+bantime  = 1h
 
 # A host is banned if it has generated "maxretry" during the last "findtime"
 # seconds.
@@ -347,7 +347,8 @@ enabled  = true
 port     = http,https
 filter   = nginx-noscript
 logpath  = /var/log/nginx/access.log
-maxretry = 6
+bantime  = 12h
+maxretry = 3
 
 [nginx-badbots]
 
@@ -355,6 +356,7 @@ enabled  = true
 port     = http,https
 filter   = apache-badbots
 logpath  = /var/log/nginx/access.log
+bantime  = 12h
 maxretry = 2
 
 [nginx-nohome]
@@ -363,6 +365,7 @@ enabled  = true
 port     = http,https
 filter   = nginx-nohome
 logpath  = /var/log/nginx/access.log
+bantime  = 12h
 maxretry = 2
 
 [nginx-noproxy]
@@ -371,6 +374,7 @@ enabled  = true
 port     = http,https
 filter   = nginx-noproxy
 logpath  = /var/log/nginx/access.log
+bantime  = 12h
 maxretry = 2
 
 [nginx-dos]
