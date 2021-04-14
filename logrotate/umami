@@ -5,5 +5,5 @@
         compress
         delaycompress
         notifempty
-        create 0640
+        copytruncate
 }
