@@ -1,0 +1,9 @@
+/var/log/rotoclone-zone/*.log {
+        daily
+        missingok
+        rotate 14
+        compress
+        delaycompress
+        notifempty
+        create 0640
+}
