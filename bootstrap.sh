@@ -108,6 +108,7 @@ cd ${BASE_DIR}
 echo "Done"
 
 echo "Setting up umami systemd service..."
+mkdir /var/log/umami
 wget -O /etc/systemd/system/umami.service https://github.com/rotoclone/raspberry-pi-stuff/raw/master/systemd/umami.service
 echo "Done"
 ## end umami stuff
@@ -152,10 +153,12 @@ rm -f rotoclone-zone.zip
 echo "Done"
 
 echo "Setting up system-stats-dashboard systemd service..."
+mkdir /var/log/system-stats-dashboard
 wget -O /etc/systemd/system/systemstatsdashboard.service https://github.com/rotoclone/raspberry-pi-stuff/raw/master/systemd/systemstatsdashboard.service
 echo "Done"
 
 echo "Setting up rotoclone-zone systemd service..."
+mkdir /var/log/rotoclone-zone
 wget -O /etc/systemd/system/rotoclonezone.service https://github.com/rotoclone/raspberry-pi-stuff/raw/master/systemd/rotoclonezone.service
 echo "Done"
 
