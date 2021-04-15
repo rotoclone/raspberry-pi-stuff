@@ -149,6 +149,7 @@ npm install --global yarn
 echo "Done"
 
 echo "Installing commento..."
+sudo -u pi bash -c "psql -c \"CREATE DATABASE commento;\""
 cd ${GIT_DIR}
 git clone https://gitlab.com/commento/commento.git
 cd commento
@@ -197,7 +198,7 @@ echo "Done"
 
 # run certbot so it sets up the auto-renew stuff
 echo "Running certbot..."
-certbot --nginx -d rotoclone.zone -d www.rotoclone.zone -d analytics.rotoclone.zone
+certbot --nginx -d rotoclone.zone -d www.rotoclone.zone -d analytics.rotoclone.zone -d comments.rotoclone.zone
 echo "Done"
 
 echo "Enabling services..."
