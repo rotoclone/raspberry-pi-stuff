@@ -156,6 +156,12 @@ git checkout v1.8.0
 make prod
 cd ${BASE_DIR}
 echo "Done"
+
+echo "Setting up commento systemd service..."
+mkdir /var/log/commento
+wget -O /etc/logrotate.d/commento https://github.com/rotoclone/raspberry-pi-stuff/raw/master/logrotate/commento
+wget -O /etc/systemd/system/commento.service https://github.com/rotoclone/raspberry-pi-stuff/raw/master/systemd/commento.service
+echo "Done"
 ## end commento stuff
 
 echo "Installing system-stats-dashboard..."
