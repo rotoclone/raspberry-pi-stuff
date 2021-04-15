@@ -206,10 +206,11 @@ systemctl enable ssh
 systemctl enable nginx
 systemctl enable fail2ban
 #systemctl enable docker
-systemctl enable systemstatsdashboard
-systemctl enable rotoclonezone
 systemctl enable postgresql
 systemctl enable umami
+systemctl enable commento
+systemctl enable systemstatsdashboard
+systemctl enable rotoclonezone
 echo "Done"
 
 echo "Success! Rebooting..."
