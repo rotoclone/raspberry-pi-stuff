@@ -139,6 +139,25 @@ echo "Done"
 #echo "Done"
 ## end shynet stuff
 
+## begin commento stuff
+echo "Installing go..."
+apt install build-essential golang go-dep
+echo "Done"
+
+echo "Installing yarn..."
+npm install --global yarn
+echo "Done"
+
+echo "Installing commento..."
+cd ${GIT_DIR}
+git clone https://gitlab.com/commento/commento.git
+cd commento
+git checkout v1.8.0
+make prod
+cd ${BASE_DIR}
+echo "Done"
+## end commento stuff
+
 echo "Installing system-stats-dashboard..."
 wget -O system-stats-dashboard.zip https://github.com/rotoclone/system-stats-dashboard/releases/latest/download/raspberrypi.zip
 unzip system-stats-dashboard.zip -d /home/pi/system-stats-dashboard
