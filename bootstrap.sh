@@ -153,7 +153,6 @@ sudo -u pi bash -c "psql -c \"CREATE DATABASE commento;\""
 cd ${GIT_DIR}
 git clone https://gitlab.com/commento/commento.git
 cd commento
-git checkout v1.8.0
 make prod
 cd ${BASE_DIR}
 echo "Done"
