@@ -148,19 +148,34 @@ echo "Installing yarn..."
 npm install --global yarn
 echo "Done"
 
-echo "Installing commento..."
+#echo "Installing commento..."
+#sudo -u pi bash -c "psql -c \"CREATE DATABASE commento;\""
+#cd ${GIT_DIR}
+#git clone https://gitlab.com/commento/commento.git
+#cd commento
+#make prod
+#cd ${BASE_DIR}
+#echo "Done"
+
+#echo "Setting up commento systemd service..."
+#mkdir /var/log/commento
+#wget -O /etc/logrotate.d/commento https://github.com/rotoclone/raspberry-pi-stuff/raw/master/logrotate/commento
+#wget -O /etc/systemd/system/commento.service https://github.com/rotoclone/raspberry-pi-stuff/raw/master/systemd/commento.service
+#echo "Done"
+
+echo "Installing commento++..."
 sudo -u pi bash -c "psql -c \"CREATE DATABASE commento;\""
 cd ${GIT_DIR}
-git clone https://gitlab.com/commento/commento.git
+git clone https://github.com/souramoo/commentoplusplus.git
 cd commento
 make prod
 cd ${BASE_DIR}
 echo "Done"
 
-echo "Setting up commento systemd service..."
-mkdir /var/log/commento
-wget -O /etc/logrotate.d/commento https://github.com/rotoclone/raspberry-pi-stuff/raw/master/logrotate/commento
-wget -O /etc/systemd/system/commento.service https://github.com/rotoclone/raspberry-pi-stuff/raw/master/systemd/commento.service
+echo "Setting up commento++ systemd service..."
+mkdir /var/log/commentoplusplus
+wget -O /etc/logrotate.d/commentoplusplus https://github.com/rotoclone/raspberry-pi-stuff/raw/master/logrotate/commentoplusplus
+wget -O /etc/systemd/system/commentoplusplus.service https://github.com/rotoclone/raspberry-pi-stuff/raw/master/systemd/commentoplusplus.service
 echo "Done"
 ## end commento stuff
 
@@ -208,7 +223,8 @@ systemctl enable fail2ban
 #systemctl enable docker
 systemctl enable postgresql
 systemctl enable umami
-systemctl enable commento
+#systemctl enable commento
+systemctl enable commentoplusplus
 systemctl enable systemstatsdashboard
 systemctl enable rotoclonezone
 echo "Done"
