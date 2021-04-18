@@ -13,6 +13,7 @@ Environment=COMMENTO_BIND_ADDRESS=0.0.0.0
 Environment=COMMENTO_PORT=8002
 Environment=COMMENTO_POSTGRES=postgres://pi:dbpassword@localhost:5432/commento?sslmode=disable
 Environment=COMMENTO_FORBID_NEW_OWNERS=true
+Environment=COMMENTO_CONFIG_FILE=/etc/commento.env
 ExecStart=/home/pi/git/commento/build/prod/commento
 User=pi
 Restart=on-failure
