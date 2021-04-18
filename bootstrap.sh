@@ -176,6 +176,7 @@ echo "Setting up commento++ systemd service..."
 mkdir /var/log/commentoplusplus
 wget -O /etc/logrotate.d/commentoplusplus https://github.com/rotoclone/raspberry-pi-stuff/raw/master/logrotate/commentoplusplus
 wget -O /etc/systemd/system/commentoplusplus.service https://github.com/rotoclone/raspberry-pi-stuff/raw/master/systemd/commentoplusplus.service
+echo "Don't forget to set up /etc/commento.env! (https://docs.commento.io/configuration/backend/)"
 echo "Done"
 
 echo "Installing postfix..."
