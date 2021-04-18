@@ -177,6 +177,14 @@ mkdir /var/log/commentoplusplus
 wget -O /etc/logrotate.d/commentoplusplus https://github.com/rotoclone/raspberry-pi-stuff/raw/master/logrotate/commentoplusplus
 wget -O /etc/systemd/system/commentoplusplus.service https://github.com/rotoclone/raspberry-pi-stuff/raw/master/systemd/commentoplusplus.service
 echo "Done"
+
+echo "Installing postfix..."
+apt install postfix libsasl2-modules
+echo "Don't forget to set up /etc/postfix/sasl/sasl_passwd! (https://medium.com/swlh/setting-up-gmail-and-other-email-on-a-raspberry-pi-6f7e3ad3d0e)"
+cp /etc/postfix/main.cf /etc/postfix/main.cf.dist
+wget -O /etc/postfix/main.cf https://github.com/rotoclone/raspberry-pi-stuff/raw/master/postfix/main.cf
+systemctl restart postfix
+echo "Done"
 ## end commento stuff
 
 echo "Installing system-stats-dashboard..."
