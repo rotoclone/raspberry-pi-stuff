@@ -238,5 +238,9 @@ systemctl enable systemstatsdashboard
 systemctl enable rotoclonezone
 echo "Done"
 
+echo "Disabling wifi..."
+echo "dtoverlay=disable-wifi" | sudo tee -a /boot/config.txt
+echo "Done"
+
 echo "Success! Rebooting..."
 reboot
