@@ -1,3 +1,9 @@
+##
+# Other steps to do not in this script:
+# * set to boot to command-line
+# * disable nopasswd for pi user (`sudo visudo /etc/sudoers.d/010_pi-nopasswd`)
+##
+
 # exit on error
 set -e
 
@@ -6,8 +12,6 @@ GIT_DIR=${BASE_DIR}/git
 
 cd ${BASE_DIR}
 mkdir ${GIT_DIR}
-
-# TODO set to boot to command-line
 
 echo "Updating packages..."
 apt-get update
