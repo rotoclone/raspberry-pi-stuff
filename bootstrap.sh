@@ -151,7 +151,13 @@ chmod +x /home/pi/goatcounter
 rm -f goatcounter.gz
 echo "Done"
 
-#TODO
+#TODO postgres
+
+echo "Setting up goatcounter systemd service..."
+mkdir /var/log/goatcounter
+wget -O /etc/logrotate.d/goatcounter https://github.com/rotoclone/raspberry-pi-stuff/raw/master/logrotate/goatcounter
+wget -O /etc/systemd/system/goatcounter.service https://github.com/rotoclone/raspberry-pi-stuff/raw/master/systemd/goatcounter.service
+echo "Done"
 
 ## end goatcounter stuff
 
