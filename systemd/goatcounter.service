@@ -9,7 +9,7 @@ StartLimitIntervalSec=0
 [Service]
 Type=simple
 WorkingDirectory=/home/pi
-ExecStart=/home/pi/goatcounter serve -listen localhost:8002 -tls http -db 'postgres://pi:dbpassword@localhost:5432/goatcounter?sslmode=verify-full'
+ExecStart=/home/pi/goatcounter serve -listen localhost:3000 -tls http -db 'postgres://pi:dbpassword@localhost:5432/goatcounter?sslmode=verify-full'
 User=pi
 Restart=on-failure
 RestartSec=1
