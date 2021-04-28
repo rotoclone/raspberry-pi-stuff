@@ -55,29 +55,29 @@ echo "Done"
 #echo "Done"
 
 ## begin umami stuff
-echo "Installing protobuf..."
-apt-get install protobuf-compiler
-echo "Done"
+#echo "Installing protobuf..."
+#apt-get install protobuf-compiler
+#echo "Done"
 
-echo "Increasing swapfile size...
+#echo "Increasing swapfile size...
 #TODO update /etc/dphys-swapfile
-/etc/init.d/dphys-swapfile restart
-echo "Done"
+#/etc/init.d/dphys-swapfile restart
+#echo "Done"
 
-echo "Building prisma..."
-cd ${GIT_DIR}
-git clone https://github.com/prisma/prisma-engines.git
-cd prisma-engines
-git checkout 2.19.0
-source ./.envrc
-cargo build --release
-cd ${BASE_DIR}
-echo "Done"
+#echo "Building prisma..."
+#cd ${GIT_DIR}
+#git clone https://github.com/prisma/prisma-engines.git
+#cd prisma-engines
+#git checkout 2.19.0
+#source ./.envrc
+#cargo build --release
+#cd ${BASE_DIR}
+#echo "Done"
 
-echo "Resetting swapfile size...
+#echo "Resetting swapfile size...
 #TODO update /etc/dphys-swapfile
-/etc/init.d/dphys-swapfile restart
-echo "Done"
+#/etc/init.d/dphys-swapfile restart
+#echo "Done"
 
 echo "Installing nodejs..."
 curl -sL https://deb.nodesource.com/setup_15.x | sudo -E bash -
@@ -94,28 +94,28 @@ echo "Done"
 #apt-get install mariadb-server
 #echo "Done"
 
-echo "Installing umami..."
-cd ${GIT_DIR}
-git clone https://github.com/mikecao/umami.git
-sudo -u pi bash -c "psql -c \"CREATE DATABASE umamidb;\""
-sudo -u pi bash -c "psql -d umamidb -f sql/schema.postgresql.sql"
-#mysql --user=root --execute="CREATE DATABASE umamidb;"
-#mysql --user=root --execute="CREATE USER 'dbuser'@'localhost' IDENTIFIED BY 'dbpassword'; GRANT ALL PRIVILEGES ON umamidb.* TO 'dbuser'@'localhost'; FLUSH PRIVILEGES;"
-#mysql --user=root umamidb < sql/schema.mysql.sql
-cd umami
-git checkout v1.16.0
-wget -O .env https://github.com/rotoclone/raspberry-pi-stuff/raw/master/umami/.env
-wget -O prisma/.env https://github.com/rotoclone/raspberry-pi-stuff/raw/master/umami/prisma.env
-npm install
-npm run build
-cd ${BASE_DIR}
-echo "Done"
+#echo "Installing umami..."
+#cd ${GIT_DIR}
+#git clone https://github.com/mikecao/umami.git
+#sudo -u pi bash -c "psql -c \"CREATE DATABASE umamidb;\""
+#sudo -u pi bash -c "psql -d umamidb -f sql/schema.postgresql.sql"
+##mysql --user=root --execute="CREATE DATABASE umamidb;"
+##mysql --user=root --execute="CREATE USER 'dbuser'@'localhost' IDENTIFIED BY 'dbpassword'; GRANT ALL PRIVILEGES ON umamidb.* TO 'dbuser'@'localhost'; FLUSH PRIVILEGES;"
+##mysql --user=root umamidb < sql/schema.mysql.sql
+#cd umami
+#git checkout v1.16.0
+#wget -O .env https://github.com/rotoclone/raspberry-pi-stuff/raw/master/umami/.env
+#wget -O prisma/.env https://github.com/rotoclone/raspberry-pi-stuff/raw/master/umami/prisma.env
+#npm install
+#npm run build
+#cd ${BASE_DIR}
+#echo "Done"
 
-echo "Setting up umami systemd service..."
-mkdir /var/log/umami
-wget -O /etc/logrotate.d/umami https://github.com/rotoclone/raspberry-pi-stuff/raw/master/logrotate/umami
-wget -O /etc/systemd/system/umami.service https://github.com/rotoclone/raspberry-pi-stuff/raw/master/systemd/umami.service
-echo "Done"
+#echo "Setting up umami systemd service..."
+#mkdir /var/log/umami
+#wget -O /etc/logrotate.d/umami https://github.com/rotoclone/raspberry-pi-stuff/raw/master/logrotate/umami
+#wget -O /etc/systemd/system/umami.service https://github.com/rotoclone/raspberry-pi-stuff/raw/master/systemd/umami.service
+#echo "Done"
 ## end umami stuff
 
 ## begin shynet stuff
@@ -142,6 +142,18 @@ echo "Done"
 #docker exec -it shynet_main ./manage.py hostname analytics.rotoclone.zone
 #echo "Done"
 ## end shynet stuff
+
+## begin goatcounter stuff
+echo "Installing goatcounter..."
+wget -O goatcounter.gz https://github.com/zgoat/goatcounter/releases/download/v2.0.4/goatcounter-v2.0.4-linux-arm.gz
+gunzip goatcounter.gz
+chmod +x /home/pi/goatcounter
+rm -f goatcounter.gz
+echo "Done"
+
+#TODO
+
+## end goatcounter stuff
 
 ## begin commento stuff
 echo "Installing go..."
