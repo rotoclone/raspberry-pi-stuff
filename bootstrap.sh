@@ -149,9 +149,9 @@ wget -O goatcounter.gz https://github.com/zgoat/goatcounter/releases/download/v2
 gunzip goatcounter.gz
 chmod +x /home/pi/goatcounter
 rm -f goatcounter.gz
+sudo -u pi bash -c "psql -c \"CREATE DATABASE goatcounter;\""
+sudo -u pi bash -c "psql -c \"alter database goatcounter set seq_page_cost=.5;\""
 echo "Done"
-
-#TODO postgres
 
 echo "Setting up goatcounter systemd service..."
 mkdir /var/log/goatcounter
@@ -253,7 +253,8 @@ systemctl enable nginx
 systemctl enable fail2ban
 #systemctl enable docker
 systemctl enable postgresql
-systemctl enable umami
+#systemctl enable umami
+systemctl enable goatcounter
 #systemctl enable commento
 systemctl enable commentoplusplus
 systemctl enable systemstatsdashboard
