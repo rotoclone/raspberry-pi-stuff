@@ -149,8 +149,9 @@ wget -O goatcounter.gz https://github.com/zgoat/goatcounter/releases/download/v2
 gunzip goatcounter.gz
 chmod +x /home/pi/goatcounter
 rm -f goatcounter.gz
-sudo -u pi bash -c "psql -c \"CREATE DATABASE goatcounter;\""
-sudo -u pi bash -c "psql -c \"alter database goatcounter set seq_page_cost=.5;\""
+# using postgres provides better performance, but goatcounter requires postgres 12, which isn't available for raspberry pi yet
+#sudo -u pi bash -c "psql -c \"CREATE DATABASE goatcounter;\""
+#sudo -u pi bash -c "psql -c \"alter database goatcounter set seq_page_cost=.5;\""
 echo "Done"
 
 echo "Setting up goatcounter systemd service..."
