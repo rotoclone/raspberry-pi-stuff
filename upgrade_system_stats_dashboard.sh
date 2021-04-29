@@ -11,8 +11,8 @@ cp -r ${TARGET_DIR}/stats_history ${TEMP_DIR}/
 rm -rf $TARGET_DIR
 mkdir $TARGET_DIR
 mkdir ${TARGET_DIR}/stats_history
-chmod a+w ${TARGET_DIR}/stats_history
 cp -r ${TEMP_DIR}/stats_history ${TARGET_DIR}/
+chmod a+w ${TARGET_DIR}/stats_history
 cp ${GIT_DIR}/target/release/${BINARY_NAME} ${TARGET_DIR}/
 cp ${GIT_DIR}/Rocket.toml ${TARGET_DIR}/
 cp -r ${GIT_DIR}/templates ${TARGET_DIR}/
