@@ -159,7 +159,6 @@ mkdir /var/log/goatcounter
 wget -O /etc/logrotate.d/goatcounter https://github.com/rotoclone/raspberry-pi-stuff/raw/master/logrotate/goatcounter
 wget -O /etc/systemd/system/goatcounter.service https://github.com/rotoclone/raspberry-pi-stuff/raw/master/systemd/goatcounter.service
 echo "Done"
-
 ## end goatcounter stuff
 
 ## begin commento stuff
@@ -216,6 +215,12 @@ wget -O system-stats-dashboard.zip https://github.com/rotoclone/system-stats-das
 unzip system-stats-dashboard.zip -d /home/pi/system-stats-dashboard
 chmod +x /home/pi/system-stats-dashboard/system-stats-dashboard
 rm -f system-stats-dashboard.zip
+echo "Done"
+
+echo "Cloning rotoclone-zone-content..."
+cd ${GIT_DIR}
+git clone https://github.com/rotoclone/rotoclone-zone-content.git
+cd ${BASE_DIR}
 echo "Done"
 
 echo "Installing rotoclone-zone..."
