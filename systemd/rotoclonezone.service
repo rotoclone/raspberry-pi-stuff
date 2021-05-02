@@ -6,6 +6,7 @@ StartLimitIntervalSec=0
 [Service]
 Type=simple
 WorkingDirectory=/home/pi/rotoclone-zone/
+Environment=ROCKET_SITE_CONTENT_BASE_DIR=/home/pi/git/rotoclone-zone-content
 ExecStart=/home/pi/rotoclone-zone/rotoclone-zone
 User=pi
 Restart=on-failure
