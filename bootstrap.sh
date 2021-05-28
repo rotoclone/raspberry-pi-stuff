@@ -39,6 +39,10 @@ wget -O /etc/fail2ban/filter.d/nginx-dos.conf https://github.com/rotoclone/raspb
 systemctl restart fail2ban
 echo "Done"
 
+echo "Installing cockpit..."
+apt-get install cockpit
+echo "Done"
+
 echo "Installing certbot..."
 apt-get install certbot
 apt-get install python-certbot-nginx
